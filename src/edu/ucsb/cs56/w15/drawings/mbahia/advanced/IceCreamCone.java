@@ -50,7 +50,7 @@ public class IceCreamCone extends GeneralPathWrapper implements Shape
 	double radius = height/2.0;
 
 	// make the ice cream
-	Arc2D.Double halfCircle = new Arc2D.Double (x, y+height, base, y, 0, 360, Arc2D.OPEN);
+	Arc2D.Double halfCircle = new Arc2D.Double (x, y/2.0, base, y, 0, 180, Arc2D.OPEN);
 
 
 	// put the ice cream and cone together

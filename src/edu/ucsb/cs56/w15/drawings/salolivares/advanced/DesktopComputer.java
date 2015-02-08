@@ -16,7 +16,7 @@ import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
 /**
-   A vector drawing of a house that implements
+   A vector drawing of a desktop computer that implements
    the Shape interface, and so can be drawn, as well as
    rotated, scaled, etc.
       

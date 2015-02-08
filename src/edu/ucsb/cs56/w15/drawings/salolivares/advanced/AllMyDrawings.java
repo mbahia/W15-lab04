@@ -26,7 +26,7 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
 public class AllMyDrawings
 {
-    /** Draw a picture with a few houses 
+    /** Draw a picture with a few computers
      */
 
     public static void drawPicture1(Graphics2D g2) {
@@ -60,8 +60,8 @@ public class AllMyDrawings
 	
 	// Draw two houses with Windows
 	
-	HouseWithWindows hw1 = new HouseWithWindows(50,350,40,75);
-	HouseWithWindows hw2 = new HouseWithWindows(200,350,200,100);
+	DesktopComputerWithMonitor hw1 = new DesktopComputerWithMonitor(50,350,40,75);
+	DesktopComputerWithMonitor hw2 = new DesktopComputerWithMonitor(200,350,70,100);
 	
 	g2.draw(hw1);
 	g2.setColor(new Color(0x8F00FF)); g2.draw(hw2);

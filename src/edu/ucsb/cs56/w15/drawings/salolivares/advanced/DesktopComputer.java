@@ -35,23 +35,34 @@ public class DesktopComputer extends GeneralPathWrapper implements Shape
      */
     public DesktopComputer(double x, double y, double width, double height)
     {
-    
-        // Rather than having to scale at the end, we can just
-        // draw things the right way to begin with, using the
-        // x, y, width and height.   If you haven't already
-        // hard coded a particular drawing, this may be an easier
-        // way.
-        
         double firstStoryHeight = .75 * height;
         double roofHeight = height - firstStoryHeight;
-        
         double firstStoryUpperLeftY = y + roofHeight;
         
-        // Make the first story
+        // Component Positions
+        double firstCdDiskLowerLeftX;
+        double secondCdDiskLowerLeftX;
+        double powerButtonLowerLeftX;
+
+        double firstCdDiskLowerLeftY; 
+        double secondCdDiskLowerLeftY;
+        double powerButtonLowerLeftY;
         
-        Rectangle2D.Double firstStory = 
-            new Rectangle2D.Double(x, firstStoryUpperLeftY ,
-                          width, firstStoryHeight);
+        // Component Heights
+        double firstCdDiskHeight = .10 * height;
+        double secondCdDiskHeight = firstCdDiskHeight;
+        double powerButtonHeight = .10 * height;
+       
+        // Component Widths
+        double firstCdDiskWidth = .80 * width;
+        double secondCdDiskWidth = firstCdDiskWidth;
+        double powerButtonWidth = .10 * width;
+        
+        // Make computer tower, cd trays and power button
+        
+        Rectangle2D.Double DesktopTower = new Rectangle2D.Double(x, y, width, height);
+        Rectangle2D.Double CDTrayOne = new Rectangle2D.Double(firstCdDiskLowerLeftX,firstCdDiskLowerLeftY,firstCdDiskWidth,firstCdDiskHeight);
+        Rectangle2D.Double CDTrayTwo = new Rectangle2D.Double(secondCdDiskLowerLeftX,secondCdDiskLowerLeftY,secondCdDiskWidth,secondCdDiskHeight);
                           
         // make the roof.   Remember that y goes DOWN the page,
         // so we ADD to y to get a "lower" value on the screen
@@ -67,9 +78,9 @@ public class DesktopComputer extends GeneralPathWrapper implements Shape
         // put the whole house together
        
         GeneralPath wholeHouse = this.get();
-        wholeHouse.append(firstStory, false);
-        wholeHouse.append(leftRoof, false);
-        wholeHouse.append(rightRoof, false); 
+        //wholeHouse.append(firstStory, false);
+        //wholeHouse.append(leftRoof, false);
+        //wholeHouse.append(rightRoof, false); 
         
     }
 

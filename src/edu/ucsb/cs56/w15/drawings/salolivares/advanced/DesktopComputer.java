@@ -11,6 +11,7 @@ import java.awt.Rectangle;
 import java.awt.geom.PathIterator;
 import java.awt.geom.AffineTransform;
 
+import edu.ucsb.cs56.w15.drawings.salolivares.simple.Circle;
 import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
@@ -35,53 +36,44 @@ public class DesktopComputer extends GeneralPathWrapper implements Shape
      */
     public DesktopComputer(double x, double y, double width, double height)
     {
-        double firstStoryHeight = .75 * height;
-        double roofHeight = height - firstStoryHeight;
-        double firstStoryUpperLeftY = y + roofHeight;
-        
         // Component Positions
-        double firstCdDiskLowerLeftX;
-        double secondCdDiskLowerLeftX;
-        double powerButtonLowerLeftX;
+        double firstCdDiskLowerLeftX = x + (width*.10);
+        double secondCdDiskLowerLeftX = firstCdDiskLowerLeftX;
+        double powerButtonCenterX = x + (width*.5);
 
-        double firstCdDiskLowerLeftY; 
-        double secondCdDiskLowerLeftY;
-        double powerButtonLowerLeftY;
+        double firstCdDiskLowerLeftY = y + (height * .10);
+        double secondCdDiskLowerLeftY = firstCdDiskLowerLeftY + 2*(height * .10);
+        double powerButtonCenterY = secondCdDiskLowerLeftY + (height*.30);
         
         // Component Heights
         double firstCdDiskHeight = .10 * height;
         double secondCdDiskHeight = firstCdDiskHeight;
-        double powerButtonHeight = .10 * height;
-       
+
         // Component Widths
+        // | +------------+ |
+        // | |            | |
+        // | +------------+ |
+        // |.10w  .80w  .10w|
         double firstCdDiskWidth = .80 * width;
         double secondCdDiskWidth = firstCdDiskWidth;
-        double powerButtonWidth = .10 * width;
+
+        //Circle Radius
+        double powerButtonRadius = (.10 * width)/2;
         
         // Make computer tower, cd trays and power button
         
         Rectangle2D.Double DesktopTower = new Rectangle2D.Double(x, y, width, height);
         Rectangle2D.Double CDTrayOne = new Rectangle2D.Double(firstCdDiskLowerLeftX,firstCdDiskLowerLeftY,firstCdDiskWidth,firstCdDiskHeight);
         Rectangle2D.Double CDTrayTwo = new Rectangle2D.Double(secondCdDiskLowerLeftX,secondCdDiskLowerLeftY,secondCdDiskWidth,secondCdDiskHeight);
-                          
-        // make the roof.   Remember that y goes DOWN the page,
-        // so we ADD to y to get a "lower" value on the screen
-        
-        Line2D.Double leftRoof = 
-            new Line2D.Double (x, y + roofHeight,
-                               x + width/2.0, y);
-                               
-        Line2D.Double rightRoof =
-            new Line2D.Double (x + width/2.0, y,
-                               x + width, y + roofHeight);
+        Circle powerButton = new Circle(powerButtonCenterX,powerButtonCenterY,powerButtonRadius);
 
-        // put the whole house together
+        // put the computer together
        
-        GeneralPath wholeHouse = this.get();
-        //wholeHouse.append(firstStory, false);
-        //wholeHouse.append(leftRoof, false);
-        //wholeHouse.append(rightRoof, false); 
-        
+        GeneralPath wholeComputer = this.get();
+        wholeComputer.append(DesktopTower,false);
+        wholeComputer.append(CDTrayOne,false);
+        wholeComputer.append(CDTrayTwo,false);
+        wholeComputer.append(powerButton,false);
     }
 
 }

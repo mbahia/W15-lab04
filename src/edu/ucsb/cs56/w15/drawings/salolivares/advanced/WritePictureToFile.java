@@ -32,7 +32,7 @@ public class WritePictureToFile
        System.out.println(" produces foo.png from drawPicture3");
     }
 
-    /** Write the drawFourCoffeeCups picture to a file.
+    /** Write the drawComputers picture to a file.
      *
      * @param args  The first command line argument is the file to write to.  We leave off the extension
      *              because that gets put on automatically.

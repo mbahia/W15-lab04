@@ -14,9 +14,8 @@ import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
 /**
-   A vector drawing of an ice cream cone that implements
-   the Shape interface, and so can be drawn, as well as
-   rotated, scaled, etc.
+   A drawing of an ice cream cone that extends GeneralPathWrapper
+   and implements shape. It uses Lines and Arcs. 
       
    @author Manpreet Bahia
    @version for CS56, Winter 15, UCSB
@@ -27,20 +26,15 @@ public class IceCreamCone extends GeneralPathWrapper implements Shape
     /**
        Constructor
 
-       @param x x coord of lower left corner of house
-       @param y y coord of lower left corner of house
-       @param width width of the house
-       @param height of house (including first story and second story)
+       @param x x coordinate for top corner of cone
+       @param y y coordinate for lower corner of cone
+       @param base base of the cone
+       @param height height of cone 
      */
     public IceCreamCone(double x, double y, double base, double height)
     {
     
-        // Rather than having to scale at the end, we can just
-        // draw things the right way to begin with, using the
-        // x, y, base and height.
-                          
-        // make the cone
-        
+	// make the cone a triangular shape
 	Line2D.Double leftCone = new Line2D.Double (x, y, x + base/2.0, y + height);
 
 	Line2D.Double rightCone =  new Line2D.Double (x + base/2.0, y + height, x + base, y);
@@ -50,8 +44,7 @@ public class IceCreamCone extends GeneralPathWrapper implements Shape
 	double radius = height/2.0;
 
 	// make the ice cream
-	Arc2D.Double halfCircle = new Arc2D.Double (x, y/2.0, base, y, 0, 180, Arc2D.OPEN);
-
+	Arc2D.Double iceCream = new Arc2D.Double (x, y/2.0, base, y, 0, 180, Arc2D.OPEN);
 
 	// put the ice cream and cone together
 
@@ -59,11 +52,11 @@ public class IceCreamCone extends GeneralPathWrapper implements Shape
 	IceCC.append(rightCone, false); 
 	IceCC.append(leftCone, false);
         IceCC.append(Cone, false);
-	IceCC.append(halfCircle, false);
-
+	IceCC.append(iceCream, false);
         
     }
 
 }
+
 
 

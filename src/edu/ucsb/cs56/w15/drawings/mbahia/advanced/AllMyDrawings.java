@@ -19,140 +19,117 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 /**
  * A class with static methods for drawing various pictures
  * 
- * @author Phill Conrad 
- * @version for CS10, lab06, Spring 2009
+ * @author Manpreet Bahia
+ * @version for CS56, lab04, Winter 2015
  */
 
 
 public class AllMyDrawings
 {
-    /** Draw a picture with a few houses 
+    /** Draws a few Ice Cream Cones and Ice Cream Cones With Toppings 
+	with the colors of the rainbow
      */
 
     public static void drawPicture1(Graphics2D g2) {
+	
+	IceCreamConeWithToppings kidsize = new IceCreamConeWithToppings(50, 120, 50, 75);
+	IceCreamCone mediumsize = new IceCreamCone(300, 130, 75, 150);
+	IceCreamCone adultsize = new IceCreamCone(170, 200, 125, 175);
 
-	House h1 = new House(100,250,50,75);
-	g2.setColor(Color.CYAN); g2.draw(h1);
-	
-	// Make a black house that's half the size, 
-	// and moved over 150 pixels in x direction
+	g2.setColor(Color.RED);   
+	g2.draw(kidsize);
+	g2.setColor(Color.YELLOW);   
+	g2.draw(mediumsize);
+	g2.setColor(Color.ORANGE);
+	g2.draw(adultsize);
 
-	Shape h2 = ShapeTransforms.scaledCopyOfLL(h1,0.5,0.5);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	g2.setColor(Color.BLACK); g2.draw(h2);
+
+	Shape IC = ShapeTransforms.scaledCopyOfLL(kidsize,1.5,1.5);
+	IC = ShapeTransforms.translatedCopyOf(IC,25,300);
+	g2.setColor(Color.GREEN);   
+	g2.draw(IC);
+
+	Shape IC2 = ShapeTransforms.scaledCopyOfLL(mediumsize,.5,.5);
+	IC2 = ShapeTransforms.translatedCopyOf(IC2, 0, 150);
+	g2.setColor(Color.BLUE);
+	g2.draw(IC2);
 	
-	// Here's a house that's 4x as big (2x the original)
-	// and moved over 150 more pixels to right.
-	h2 = ShapeTransforms.scaledCopyOfLL(h2,4,4);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	
-	// We'll draw this with a thicker stroke
-	Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);       
-	
-	// for hex colors, see (e.g.) http://en.wikipedia.org/wiki/List_of_colors
-	// #002FA7 is "International Klein Blue" according to Wikipedia
-	// In HTML we use #, but in Java (and C/C++) its 0x
-	
-	Stroke orig=g2.getStroke();
-	g2.setStroke(thick);
-	g2.setColor(new Color(0x002FA7)); 
-	g2.draw(h2); 
-	
-	// Draw two houses with Windows
-	
-	HouseWithWindows hw1 = new HouseWithWindows(50,350,40,75);
-	HouseWithWindows hw2 = new HouseWithWindows(200,350,200,100);
-	
-	g2.draw(hw1);
-	g2.setColor(new Color(0x8F00FF)); g2.draw(hw2);
-	
-	// @@@ FINALLY, SIGN AND LABEL YOUR DRAWING
-	
-	g2.setStroke(orig);
-	g2.setColor(Color.BLACK); 
-	g2.drawString("A few houses by Phill Conrad", 20,20);
+	// make the purple line thick
+	Shape IC3 = ShapeTransforms.scaledCopyOfLL(IC,1.25,1.25);
+	IC3 = ShapeTransforms.translatedCopyOf(IC3, 300, 0);
+	g2.setColor(new Color(0x9b30ff));
+	Stroke thickLine = new BasicStroke (1.75f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_ROUND);       
+	g2.setStroke(thickLine);
+	g2.draw(IC3);
+
+	g2.setColor(Color.LIGHT_GRAY);
+	g2.drawString("Ice Cream Cones with the Colors of the Rainbow by Manpreet Bahia", 20,20);
     }
 
 
-    /** Draw a picture with a few houses and coffee cups
+    /** Draws a picture with 4 Ice Cream Cones and Ice Cream Cones with Toppings 
+	of same size in a circle.
      */
     public static void drawPicture2(Graphics2D g2) {
 
-	// Draw some coffee cups.
-	
-	CoffeeCup large = new CoffeeCup(100,50,225,150);
-	CoffeeCup smallCC = new CoffeeCup(20,50,40,30);
-	CoffeeCup tallSkinny = new CoffeeCup(20,150,20,40);
-	CoffeeCup shortFat = new CoffeeCup(20,250,40,20);
-	
-	g2.setColor(Color.RED);     g2.draw(large);
-	g2.setColor(Color.GREEN);   g2.draw(smallCC);
-	g2.setColor(Color.BLUE);    g2.draw(tallSkinny);
-	g2.setColor(Color.MAGENTA); g2.draw(shortFat);
-	
-	House h1 = new House(100,250,50,75);
-	g2.setColor(Color.CYAN); g2.draw(h1);
-	
-	// Make a black house that's half the size, 
-	// and moved over 150 pixels in x direction
-	Shape h2 = ShapeTransforms.scaledCopyOfLL(h1,0.5,0.5);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	g2.setColor(Color.BLACK); g2.draw(h2);
-	
-	// Here's a house that's 4x as big (2x the original)
-	// and moved over 150 more pixels to right.
-	h2 = ShapeTransforms.scaledCopyOfLL(h2,4,4);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	
-	// We'll draw this with a thicker stroke
-	Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);       
-	
-	// for hex colors, see (e.g.) http://en.wikipedia.org/wiki/List_of_colors
-	// #002FA7 is "International Klein Blue" according to Wikipedia
-	// In HTML we use #, but in Java (and C/C++) its 0x
-	
-	Stroke orig=g2.getStroke();
-	g2.setStroke(thick);
-	g2.setColor(new Color(0x002FA7)); 
-	g2.draw(h2); 
-	
-	// Draw two houses with Windows
-	
-	HouseWithWindows hw1 = new HouseWithWindows(50,350,40,75);
-	HouseWithWindows hw2 = new HouseWithWindows(200,350,200,100);
-	
-	g2.draw(hw1);
-	g2.setColor(new Color(0x8F00FF)); 
+	IceCreamConeWithToppings ICtemp = new IceCreamConeWithToppings(75, 75, 75, 75);
+	Shape ICCT = ShapeTransforms.translatedCopyOf(ICtemp, 137, 180);
+	g2.draw(ICCT);
 
-	// Rotate the second house 45 degrees around its center.
-	Shape hw3 = ShapeTransforms.rotatedCopyOf(hw2, Math.PI/4.0);
+	Stroke thickLine = new BasicStroke (1.75f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_ROUND);       
 
-	g2.draw(hw3);
+	IceCreamCone IC = new IceCreamCone(200, 100, 100, 100);
+	g2.setStroke(thickLine);
+	g2.setColor(new Color(0x7a4b1c));
+	g2.draw(IC);
+		
+	Shape IC2 = ShapeTransforms.rotatedCopyOf(IC, Math.PI/2.0);
+	IC2 = ShapeTransforms.translatedCopyOf(IC2, 150, 150);
+	g2.setColor(Color.MAGENTA);
+	g2.setStroke(thickLine);
+	g2.draw(IC2);
+
+	Shape IC3 = ShapeTransforms.rotatedCopyOf(IC, Math.PI);
+	IC3 = ShapeTransforms.translatedCopyOf(IC3, 0, 300);
+	g2.setColor(Color.GREEN);
+	g2.setStroke(thickLine);
+	g2.draw(IC3);
+
+	Shape IC4 = ShapeTransforms.rotatedCopyOf(IC, Math.PI/-2.0);
+	IC4 = ShapeTransforms.translatedCopyOf(IC4, -150, 150);
+	g2.setColor(Color.BLUE);
+	g2.setStroke(thickLine);
+	g2.draw(IC4);
 	
-	// @@@ FINALLY, SIGN AND LABEL YOUR DRAWING
-	
-	g2.setStroke(orig);
 	g2.setColor(Color.BLACK); 
-	g2.drawString("A bunch of Coffee Cups and a few houses by Phill Conrad", 20,20);
+	g2.drawString("Ice Cream Cones in a Circle by Manpreet Bahia", 20,20);
     }
   
-    /** Draw a different picture with a few houses and coffee cups
+    /** Draws a different picture with an ice cream cone
+	and ice cream cone with toppings.
      */
 
     public static void drawPicture3(Graphics2D g2) {
 	
 	// label the drawing
 	
-	g2.drawString("An Ice Cream Cone by Manpreet Bahia", 20,20);
+	g2.drawString("Two Ice Cream Cones by Manpreet Bahia", 20, 20);
 
-	
-	// Draw some coffee cups.
+	// Drawing 2 ice cream cones
 
-	IceCreamCone small = new IceCreamCone(100, 100, 100, 200);
-	IceCreamCone large = new IceCreamCone(20, 50, 50, 100);
+	IceCreamCone small = new IceCreamCone(50, 100, 50, 75);
+	IceCreamConeWithToppings large = new IceCreamConeWithToppings(200, 200, 200, 200);
+
+	// make a thick line
+	Stroke thickLine = new BasicStroke (7.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_ROUND);       
+
        
-       g2.setColor(Color.BLACK);   g2.draw(large);
-       g2.setColor(Color.GREEN);   g2.draw(small);
+       g2.setColor(Color.PINK);   
+       g2.draw(large);
+       g2.setColor(Color.ORANGE);   
+       g2.setStroke(thickLine);
+       g2.draw(small);
+  
        
        
     }

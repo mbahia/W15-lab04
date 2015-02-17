@@ -6,21 +6,19 @@ import java.awt.Graphics2D;
 import javax.swing.JComponent;
 
 /**
-   A component that draws a Picture by Phill Conrad and Kelvin Yang
-   
-   @author Phill Conrad (original drawing)
-   @author Kelvin Yang (new drawing)
-   @version CS56, Winter 2015, UCSB
-
-   
-*/
-
+ * A component that draws a Picture by Phill Conrad and Kelvin Yang
+ * 
+ * @author Phill Conrad (original drawing)
+ * @author Kelvin Yang (new drawing)
+ * @version CS56, Winter 2015, UCSB
+ */
 
 public class MultiPictureComponent extends JComponent
-{  
+{
     private int whichPicture = 0;
 
-    public MultiPictureComponent(int whichPicture) {
+    public MultiPictureComponent(int whichPicture)
+    {
         this.whichPicture = whichPicture;
     }
 
@@ -32,32 +30,27 @@ public class MultiPictureComponent extends JComponent
      * doesn't do what we want, so we have to "override" that method with
      * our own method.  
      */
-    
-   public void paintComponent(Graphics g)
-   {  
-
-       Graphics2D g2 = (Graphics2D) g;
-
-       // Call a static method for drawing picture 2
-
-       switch (this.whichPicture)
-       {
-           case 1:
+    public void paintComponent(Graphics g)
+    {
+        Graphics2D g2 = (Graphics2D) g;
+        
+        // Call a static method for drawing picture 2
+        switch (this.whichPicture)
+        {
+            case 1:
                AllMyDrawings.drawPicture1(g2);
                break;
-
-           case 2:
+               
+            case 2:
                AllMyDrawings.drawPicture2(g2);
                break;
-
-           case 3:
+               
+            case 3:
                AllMyDrawings.drawPicture3(g2);
                break;
-           default:
+               
+            default:
                throw new IllegalArgumentException("Unknown value for whichPicture in MultiPictureComponent" + this.whichPicture);
-           
-       } // switch
-   } // paintComponent
-        
-  
+        } // switch
+    } // paintComponent
 }

@@ -3,8 +3,7 @@ import javax.swing.JFrame;
 import java.awt.event.*;
 
 /** A viewer class to see a picture I drew with 
- *  just three simple Java graphics objects, namely
- *  Rectangle, Line2D.Double, Ellipse2D.Double
+ *  additional animation
  *  
  * @author P. Conrad
  * @author Kelvin Yang
@@ -34,7 +33,7 @@ public class AnimatedPictureViewer extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // Instantiate your drawing as a "component"
-        component = new AnimatedPictureComponent(FAN_X, FAN_Y, FAN_HEIGHT, 20);
+        component = new AnimatedPictureComponent(FAN_X, FAN_Y, FAN_HEIGHT, 25);
         
         // Always add your component to the frame and then make the window visible
         add(component);
@@ -53,7 +52,7 @@ public class AnimatedPictureViewer extends JFrame
                     a.running = true; //Start animation
                 else
                 {
-                    t.start();
+                    t.start(); //start thread
                     started = true;
                 }
             }

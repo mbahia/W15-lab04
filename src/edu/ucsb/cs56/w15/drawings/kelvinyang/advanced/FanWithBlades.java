@@ -24,10 +24,10 @@ public class FanWithBlades extends Fan implements Shape
         //Draw the rest of the fan using super
         super(x, y, height);
         FanBlades fb = new FanBlades(x, y, height);
-
+        
         //Get the rest of the fan
         GeneralPath wholeFan = this.get();
-
+        
         //Add the blades of the fan
         wholeFan.append(fb, false);
     }

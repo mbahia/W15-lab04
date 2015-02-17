@@ -22,7 +22,7 @@ public class AnimatedPictureComponent extends JComponent
     private double speed;
     
     /** Constructs an AnimatedPictureComponent with specific properties.
-     *  This animated picture depicts a pencil writing across the screen
+     *  This animated picture depicts a fan with rotating blades
      * @param x x coordinate of top left of fan
      * @param y y coordinate of top left of fan
      * @param height the height of the fan
@@ -34,10 +34,10 @@ public class AnimatedPictureComponent extends JComponent
         blades = new FanBlades(x, y, height);
         this.speed = 1000.0 / speed;
     }
-
+    
     /** The paintComponent method is orverriden to display
      *  out animation. Each time this method is called, the
-     *  position of the pencil is updated
+     *  position of the fan blades are updated
      */
     public void paintComponent(Graphics g)
     {

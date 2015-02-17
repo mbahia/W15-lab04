@@ -2,23 +2,8 @@ package edu.ucsb.cs56.w15.drawings.kelvinyang.advanced;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import javax.swing.JPanel;
+
 import javax.swing.JComponent;
-
-// the four tools things we'll use to draw
-
-import java.awt.geom.Line2D;  // single lines
-import java.awt.geom.Ellipse2D;  // ellipses and circles
-import java.awt.Rectangle;  // squares and rectangles
-import java.awt.geom.GeneralPath; // combinations of lines and curves
-
-
-import java.awt.geom.Rectangle2D; // for rectangles drawing with Doubles
-
-import java.awt.Color; // class for Colors
-import java.awt.Shape; // Shape interface
-import java.awt.Stroke; // Stroke interface
-import java.awt.BasicStroke; // class that implements stroke
 
 /**
    A component that draws a Picture by Phill Conrad and Kelvin Yang

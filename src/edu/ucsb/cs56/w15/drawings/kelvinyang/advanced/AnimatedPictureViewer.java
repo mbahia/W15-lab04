@@ -14,8 +14,8 @@ public class AnimatedPictureViewer extends JFrame
 {
     Thread animate;
     AnimatedPictureComponent component;
-    static final double FAN_X = 200;
-    static final double FAN_Y = 50;
+    static final double FAN_X = 325;
+    static final double FAN_Y = 75;
     static final double FAN_HEIGHT = 350;
     
 
@@ -33,7 +33,7 @@ public class AnimatedPictureViewer extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // Instantiate your drawing as a "component"
-        component = new AnimatedPictureComponent(FAN_X, FAN_Y, FAN_HEIGHT, 25);
+        component = new AnimatedPictureComponent(FAN_X, FAN_Y, FAN_HEIGHT, 1);
         
         // Always add your component to the frame and then make the window visible
         add(component);
@@ -60,6 +60,20 @@ public class AnimatedPictureViewer extends JFrame
             public void mouseExited(MouseEvent e)
             {
                 a.running = false; //Stop animation
+            }
+            
+            public void mousePressed(MouseEvent e)
+            {
+                switch(e.getButton())
+                {
+                    case MouseEvent.BUTTON1: //Left Click (More counter-clockwise)
+                        component.modifySpeed(0.03);
+                        break;
+                    
+                    case MouseEvent.BUTTON3: //Right Click (More clockwise)
+                        component.modifySpeed(-0.03);
+                        break;
+                }
             }
         });
     }

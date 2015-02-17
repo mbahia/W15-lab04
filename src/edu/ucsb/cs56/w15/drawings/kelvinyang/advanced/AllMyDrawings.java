@@ -1,12 +1,6 @@
 package edu.ucsb.cs56.w15.drawings.kelvinyang.advanced;
 
 import java.awt.Graphics2D;
-import java.awt.geom.Line2D;  // single lines
-import java.awt.geom.Ellipse2D;  // ellipses and circles
-import java.awt.geom.Rectangle2D; // for the bounding box
-import java.awt.Rectangle;  // squares and rectangles
-import java.awt.geom.GeneralPath; // combinations of lines and curves
-import java.awt.geom.AffineTransform; // translation, rotation, scale
 import java.awt.Shape; // general class for shapes
 import java.awt.Color; // class for Colors
 import java.awt.Stroke;

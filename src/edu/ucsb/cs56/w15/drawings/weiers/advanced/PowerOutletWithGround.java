@@ -18,6 +18,11 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 public class PowerOutletWithGround extends PowerOutlet implements Shape {
     /**
        Constructor for objects of type PowerOutlet
+
+       @param x x coordinate of lower left corner of power outlet
+       @param y y coord of lower left corner of power outlet
+       @param width width of outlet
+       @param height height of outlet
     */
     public PowerOutletWithGround(double x, double y, double width, double height) {
         super(x,y,width,height);
@@ -29,7 +34,7 @@ public class PowerOutletWithGround extends PowerOutlet implements Shape {
         double bottomSocketX = x+width/4;
         double bottomSocketY = y+height+height/2;
         double groundRadius = plugRadius/4;
-
+        // ground hole for top socket
         Ellipse2D.Double topGround = new Ellipse2D.Double (
             topSocketX + plugRadius/2.65,
             topSocketY + plugRadius/1.5,
@@ -37,6 +42,7 @@ public class PowerOutletWithGround extends PowerOutlet implements Shape {
             groundRadius
         );
 
+        // ground hole for bottom socket
         Ellipse2D.Double bottomGround = new Ellipse2D.Double (
             bottomSocketX + plugRadius/2.65,
             bottomSocketY + plugRadius/1.5,

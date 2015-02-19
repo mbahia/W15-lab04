@@ -72,16 +72,19 @@ public class AllMyDrawings
 	g2.setColor(Color.BLACK); 
 	g2.drawString("A few houses by Phill Conrad", 20,20);
 */  
+        // simple power outlet in cyan
         PowerOutlet o1 = new PowerOutlet(50,50,100,150);
         g2.setColor(Color.CYAN);
         g2.draw(o1);
-
+    
+        // power outler similar to above but scaled and moved right
         Shape o2 = ShapeTransforms.scaledCopyOfLL(o1,.5,.5);
         o2 = ShapeTransforms.translatedCopyOf(o2,150,0);
         
         g2.setColor(Color.BLACK);
         g2.draw(o2);
  
+        // power outlet with ground to the right of the others
         PowerOutletWithGround p = new PowerOutletWithGround(300,50,100,150);
         g2.draw(p);
 
@@ -153,10 +156,20 @@ public class AllMyDrawings
 	g2.setColor(Color.BLACK); 
 	g2.drawString("A bunch of Coffee Cups and a few houses by Phill Conrad", 20,20);
   */
-
-        PowerOutletWithGround p1 = new PowerOutletWithGround(100,100,100,150);
+        // power outlet rotated 45 degrees
+        PowerOutlet p1 = new PowerOutlet(100,100,100,150);
         Shape p2 = ShapeTransforms.rotatedCopyOf(p1, Math.PI/4.0);
         g2.draw(p2);
+
+        // power outlet with ground rotated 180
+        PowerOutletWithGround pp = new PowerOutletWithGround(200,100,60,90);
+        Shape p3 = ShapeTransforms.rotatedCopyOf(pp, Math.PI);
+        g2.draw(p3);
+
+        // scaled copy of power outlet with ground rotated 180
+        p3 = ShapeTransforms.scaledCopyOf(p3,2,2);
+        p3 = ShapeTransforms.translatedCopyOf(p3,100,0);
+        g2.draw(p3);
 
         Stroke orig = g2.getStroke();
         g2.setStroke(orig);
@@ -184,15 +197,24 @@ public class AllMyDrawings
       */
     
     // my drawings
+    // normal red power outlet with ground
     g2.drawString("Just an oversized outlet and his little brother, by William Eiers", 20,20);
     PowerOutletWithGround normal = new PowerOutletWithGround(50,50, 100, 150);
     g2.setColor(Color.RED);
     g2.draw(normal);
 
+    // bigger version of the above poweroutlet, blue and moved right/up
     Shape p = ShapeTransforms.scaledCopyOf(normal,3,3);
     p = ShapeTransforms.translatedCopyOf(p,150,-180);
     g2.setColor(Color.BLUE);
     g2.draw(p);
+    
+    // scaled, translated, and rotated copy of above
+    Shape p2 = ShapeTransforms.scaledCopyOf(normal, 0.25, .25);
+    p2 = ShapeTransforms.translatedCopyOf(p2,50,-150);
+    p2 = ShapeTransforms.rotatedCopyOf(p2,Math.PI/3);
+    g2.setColor(Color.GREEN);
+    g2.draw(p2);
     }
     
 

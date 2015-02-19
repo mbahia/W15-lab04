@@ -51,8 +51,8 @@ public class Tree extends GeneralPathWrapper implements Shape
         // Make the bottom of the tree
         
         Rectangle2D.Double bottom = 
-            new Rectangle2D.Double(x + width/2, y,
-                          width, width * 1.5);
+            new Rectangle2D.Double(x + width/1.5, y,
+                          width/1.5, width * 1.5);
                           
         // make the top of the tree.   Remember that y goes DOWN the page,
         // so we ADD to y to get a "lower" value on the screen

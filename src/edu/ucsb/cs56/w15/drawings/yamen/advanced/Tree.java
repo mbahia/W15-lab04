@@ -46,16 +46,17 @@ public class Tree extends GeneralPathWrapper implements Shape
         
 	double treeBarkHeight = height * .30;
 	double treeBarkWidth = width * .25;
-	double treeTop = height - treeBarkHeight;
+	double treeTopHeight = height - treeBarkHeight;
+	double treeTopWidth = width - treeBarkWidth;
 	
         Rectangle2D.Double bottom = 
-            new Rectangle2D.Double(x + treeBarkWidth * 1.25, y,
+            new Rectangle2D.Double(x + treeTopWidth/3, y,
                           treeBarkWidth, treeBarkHeight);
                           
         
         Ellipse2D.Double top = 
-            new Ellipse2D.Double (x,y - treeTop,
-                               treeTop, treeTop);
+            new Ellipse2D.Double (x,y - treeTopHeight,
+                             treeTopWidth, treeTopHeight);
 
         // put the tree together
        

@@ -8,6 +8,12 @@ import java.awt.geom.CubicCurve2D;
 import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
+/**
+    The blades of a fan
+    
+    @author Kelvin Yang 
+    @version for CS56, W15, UCSB, 02/12/2015
+*/
 public class FanBlades extends GeneralPathWrapper implements Shape
 {
     /**

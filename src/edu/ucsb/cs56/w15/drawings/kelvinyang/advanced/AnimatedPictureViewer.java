@@ -9,7 +9,6 @@ import java.awt.event.*;
  * @author Kelvin Yang
  * @version for UCSB CS56, W15, 02/12/2015
  */
-
 public class AnimatedPictureViewer extends JFrame
 {
     Thread animate;

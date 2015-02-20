@@ -8,18 +8,18 @@ import java.awt.Stroke; // Stroke interface
 import java.awt.BasicStroke; // class that implements stroke
 
 import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
+
 /**
- * A component that draws an animated picture by Kelvin Yang
+ * A component that draws an animated fan by Kelvin Yang
  * @author Kelvin Yang
  * @version CS56, Winter 2015, UCSB
 */
-
 public class AnimatedPictureComponent extends JComponent
 {
     private final double ZERO_SPEED = 2/Math.PI, MAX_SPEED = 2/Math.PI + 0.21, MIN_SPEED = 2/Math.PI - 0.21;
     private Shape fan;
     private Shape blades;
-    private double speed; //-1 to 1
+    private double speed;
     
     /** Constructs an AnimatedPictureComponent with specific properties.
      *  This animated picture depicts a fan with rotating blades
@@ -47,7 +47,7 @@ public class AnimatedPictureComponent extends JComponent
         g2.setStroke(thick);
         g2.draw(fan);
         g2.draw(blades);
-        blades = ShapeTransforms.rotatedCopyOf(blades, Math.PI / (speed * Math.PI));
+        blades = ShapeTransforms.rotatedCopyOf(blades, Math.PI / (speed * Math.PI)); //rotate the blades
         
         //Labels for drawing
         g2.drawString("A rotating fan by Kelvin Yang", 20,50);

@@ -27,21 +27,50 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
 public class AllMyDrawings
 {
-    /** Three Kanye Wests of varying Color/Size (aspect ratio kept)
+    /** 2 Normal Kanyes and 1 Angry Kanye of differing sizes
      */
 
     public static void drawPicture1(Graphics2D g2) {
-        Shape kw1 = new KanyeWest(100,250,50,75);
+	Shape kw1ANGRY = new KanyeWest(150,150,50,75);
+	g2.setColor(Color.BLACK); g2.draw(kw1ANGRY);
+
+	Shape kw2 = new KanyeWestAngry(150,250,100,125);
+	g2.setColor(Color.BLUE); g2.draw(kw2);
+
+	Shape kw2ANGRY = new KanyeWest(150,175,200,90);
+	g2.setColor(Color.RED); g2.draw(kw2ANGRY);
+	
+
+	
+	g2.setColor(Color.BLACK);
+	g2.drawString("Kanye West made by Dylan Lynch", 20, 20);	
+    }
+
+
+    /** Multiple Kanye Wests of varying Size/Color (with and without aspect ratio)
+     */
+    public static void drawPicture2(Graphics2D g2) {
+
+      	KanyeWest large = new KanyeWest(150,150,225,150);
+	KanyeWest small = new KanyeWest(250,150,40,30);
+	KanyeWest tallSkinny = new KanyeWest(350,150,20,40);
+	KanyeWest shortFat = new KanyeWest(450,150,40,20);
+	
+	g2.setColor(Color.RED);     g2.draw(large);
+	g2.setColor(Color.GREEN);   g2.draw(small);
+	g2.setColor(Color.BLUE);    g2.draw(tallSkinny);
+	g2.setColor(Color.MAGENTA); g2.draw(shortFat);
+	
+	KanyeWest kw1 = new KanyeWest(100,300,50,75);
 	g2.setColor(Color.CYAN); g2.draw(kw1);
 	
-	// Make a red Kanye West that's half the size, 
+	// Make a Kanye West that's half the size, 
 	// and moved over 150 pixels in x direction
-
 	Shape kw2 = ShapeTransforms.scaledCopyOfLL(kw1,0.5,0.5);
 	kw2 = ShapeTransforms.translatedCopyOf(kw2,150,0);
-	g2.setColor(Color.RED); g2.draw(kw2);
+	g2.setColor(Color.BLACK); g2.draw(kw2);
 	
-	// Here's a Kanye West that's 4x as big (2x the original)
+	// Here's a house that's 4x as big (2x the original)
 	// and moved over 150 more pixels to right.
 	kw2 = ShapeTransforms.scaledCopyOfLL(kw2,4,4);
 	kw2 = ShapeTransforms.translatedCopyOf(kw2,150,0);
@@ -58,79 +87,18 @@ public class AllMyDrawings
 	g2.setColor(new Color(0x002FA7)); 
 	g2.draw(kw2); 
 	
-	/*
-	// TODO: Draw two houses with Windows
-	
-	HouseWithWindows hw1 = new HouseWithWindows(50,350,40,75);
-	HouseWithWindows hw2 = new HouseWithWindows(200,350,200,100);
-	
-	g2.draw(hw1);
-	g2.setColor(new Color(0x8F00FF)); g2.draw(hw2);
-	
-    
-	*/
-	
-	g2.setStroke(orig);
-	g2.setColor(Color.BLACK);
-	g2.drawString("Kanye West made by Dylan Lynch", 20, 20);
-	}
-
-
-    /** Multiple Kanye Wests of varying Size/Color (with and without aspect ratio)
-     */
-    public static void drawPicture2(Graphics2D g2) {
-
-      	KanyeWest large = new KanyeWest(100,50,225,150);
-	KanyeWest small = new KanyeWest(20,50,40,30);
-	KanyeWest tallSkinny = new KanyeWest(20,150,20,40);
-	KanyeWest shortFat = new KanyeWest(20,250,40,20);
-	
-	g2.setColor(Color.RED);     g2.draw(large);
-	g2.setColor(Color.GREEN);   g2.draw(small);
-	g2.setColor(Color.BLUE);    g2.draw(tallSkinny);
-	g2.setColor(Color.MAGENTA); g2.draw(shortFat);
-	
-	KanyeWest h1 = new KanyeWest(100,250,50,75);
-	g2.setColor(Color.CYAN); g2.draw(h1);
-	
-	// Make a Kanye West that's half the size, 
-	// and moved over 150 pixels in x direction
-	Shape h2 = ShapeTransforms.scaledCopyOfLL(h1,0.5,0.5);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	g2.setColor(Color.BLACK); g2.draw(h2);
-	
-	// Here's a house that's 4x as big (2x the original)
-	// and moved over 150 more pixels to right.
-	h2 = ShapeTransforms.scaledCopyOfLL(h2,4,4);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	
-	// We'll draw this with a thicker stroke
-	Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);       
-	
-	// for hex colors, see (e.g.) http://en.wikipedia.org/wiki/List_of_colors
-	// #002FA7 is "International Klein Blue" according to Wikipedia
-	// In HTML we use #, but in Java (and C/C++) its 0x
-	
-	Stroke orig=g2.getStroke();
-	g2.setStroke(thick);
-	g2.setColor(new Color(0x002FA7)); 
-	g2.draw(h2); 
 	
 	
-	/* TODO
-	HouseWithWindows hw1 = new HouseWithWindows(50,350,40,75);
-	HouseWithWindows hw2 = new HouseWithWindows(200,350,200,100);
+	KanyeWestAngry kw1ANGRY = new KanyeWestAngry(50,100,40,75);
+	KanyeWestAngry kw2ANGRY = new KanyeWestAngry(100,150,100,200);
 	
-	g2.draw(hw1);
+	g2.draw(kw1ANGRY);
 	g2.setColor(new Color(0x8F00FF)); 
 
 	// Rotate the second house 45 degrees around its center.
-	Shape hw3 = ShapeTransforms.rotatedCopyOf(hw2, Math.PI/4.0);
-
-	g2.draw(hw3);
-	*/
-	// @@@ FINALLY, SIGN AND LABEL YOUR DRAWING
-	
+	Shape kw3ANGRY = ShapeTransforms.rotatedCopyOf(kw2ANGRY, Math.PI/4.0);
+	g2.draw(kw3ANGRY);
+		
 	g2.setStroke(orig);
 	g2.setColor(Color.BLACK); 
 	g2.drawString("Kanyes of different sizes by Dylan Lynch", 20,20);
@@ -143,8 +111,8 @@ public class AllMyDrawings
 	
        g2.drawString("Kanye West drawings by Dylan Lynch", 20,20);
 
-       KanyeWest large = new KanyeWest(100,50,225,150);
-       KanyeWest small = new KanyeWest(20,50,40,30);
+       KanyeWest large = new KanyeWest(100,200,225,150);
+       KanyeWest small = new KanyeWest(20,50,50,100);
        
        g2.setColor(Color.RED);     g2.draw(large);
        g2.setColor(Color.GREEN);   g2.draw(small);

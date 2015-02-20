@@ -24,90 +24,77 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
 public class KanyeWest extends GeneralPathWrapper implements Shape 
 {
-
-
+    /**                                                                        
+       Constructor                                                             
+       @param x x coord of left top corner of Kanye's face
+       @param y y coord of left top corner of Kanye's face                          
+       @param width width of Kanye's face                                        
+       @param height of Kanye's face
+    */
     public KanyeWest(double x, double y, double width, double height)
     {
-	
-        // Specify the upper left corner, and the 
-        //  width and height of the original points used to 
-        //  plot the *hard-coded* coffee cup
-        
-        final double ORIG_ULX = 50.0; 
-        final double ORIG_ULY = 0.0; 
-        final double ORIG_HEIGHT = 200.0; 
-        final double ORIG_WIDTH = 300.0; 
-                
         GeneralPath leftFace = new GeneralPath();
              
-        leftFace.moveTo(100,100);
-	leftFace.lineTo(100,200);
-	leftFace.lineTo(175,250);
-	leftFace.lineTo(200,260);
-	leftFace.lineTo(225,270);
-	leftFace.lineTo(300,270);
+	leftFace.moveTo(x,y);
+	leftFace.lineTo(x, y + height * 1.5);
+	leftFace.lineTo(x + width * 1.5, y + height * 2.0);
+	leftFace.lineTo(x + width * 3.0, y + height * 2.2);
+	leftFace.lineTo(x + width * 4.0, y + height * 2.2);
 
         GeneralPath leftTop = new GeneralPath();
 	
-        leftTop.moveTo(100,100);
-        leftTop.lineTo(125,75);
-	leftTop.lineTo(175,50);
-	leftTop.lineTo(225,35);
-	leftTop.lineTo(300,30);
+        leftTop.moveTo(x,y);
+	leftTop.lineTo(x + width, y - height * 0.25);
+	leftTop.lineTo(x + width * 3.0, y - height * 0.55);
+	leftTop.lineTo(x + width * 3.5, y - height * 0.55);
+	leftTop.lineTo(x + width * 4.0, y - height * 0.55);
+
 
 	GeneralPath leftShades = new GeneralPath();
-	//Frame
-	leftShades.moveTo(125, 125);
-	leftShades.lineTo(275, 125);
-	leftShades.lineTo(275, 175);
-	leftShades.lineTo(125, 175);
-	leftShades.lineTo(125, 125);
-	//Frame Connections
-	leftShades.moveTo(275, 130);
-	leftShades.lineTo(300, 130);
-	//Shutter Shades Lines
-	leftShades.moveTo(125, 135);
-	leftShades.lineTo(275, 135);
-	leftShades.moveTo(125, 145);
-	leftShades.lineTo(275, 145);
-	leftShades.moveTo(125, 155);
-	leftShades.lineTo(275, 155);
-	leftShades.moveTo(125, 165);
-	leftShades.lineTo(275, 165);
-	leftShades.moveTo(125, 175);
-	leftShades.lineTo(275, 175);
+	// Frames
+	leftShades.moveTo(x + width * 0.5,y + height * 0.3);
+	leftShades.lineTo(x + width * 3.5, y + height * 0.3);
+	leftShades.lineTo(x + width * 3.5, y + height * 0.90);
+	leftShades.lineTo(x + width * 0.5, y + height * 0.90);
+	leftShades.lineTo(x + width * 0.5, y + height * 0.3);
+	//Shutter Lines
 	
+	leftShades.moveTo(x + width * 0.5, y + height * 0.40);
+	leftShades.lineTo(x + width * 7.0, y + height * 0.40);
+	for (int i = 1; i <= 5; i++) {
+	    double k = .40 + i * .10;
+	    leftShades.moveTo(x + width * 0.5, y + height * k);
+	    leftShades.lineTo(x + width * 3.5, y + height * k);
+	}
 
 	GeneralPath mouth = new GeneralPath();
+	leftShades.moveTo(x + width * 3.5, y + height * 1.75);
+	leftShades.lineTo(x + width * 5.5, y + height * 1.75);
+	
+	GeneralPath leftKanye = new GeneralPath();
+	leftKanye.append(leftTop, false);
+	leftKanye.append(leftFace, false);
+	leftKanye.append(leftShades, false);
 
-	mouth.moveTo(250,250);
-	mouth.lineTo(400,250);
+	Shape rightKanye 
+	    = ShapeTransforms.horizontallyFlippedCopyOf(leftKanye);
 
-	Shape rightTop = ShapeTransforms.horizontallyFlippedCopyOf(leftTop);
-        Shape rightFace = ShapeTransforms.horizontallyFlippedCopyOf(leftFace);
-	Shape rightShades = ShapeTransforms.horizontallyFlippedCopyOf(leftShades);
+	rightKanye = ShapeTransforms.translatedCopyOf(rightKanye, width * 8.0, 0.0);
 
-        // after flipping around the upper left hand corner of the
-        // bounding box, we move this over to the right by 400 pixels
-       
-	rightTop = ShapeTransforms.translatedCopyOf(rightTop, 400.0, 0.0);
-        rightFace = ShapeTransforms.translatedCopyOf(rightFace, 400.0, 0.0);
-	rightShades = ShapeTransforms.translatedCopyOf(rightShades,350.0,0.0);
-        // now we put the whole thing together ino a single path.
-       
         GeneralPath wholeKanye = new GeneralPath ();
-	wholeKanye.append(leftTop, false);
-	wholeKanye.append(rightTop, false);
-        wholeKanye.append(leftFace, false);
-        wholeKanye.append(rightFace, false);
-	wholeKanye.append(leftShades, false);
-	wholeKanye.append(rightShades, false);
+	wholeKanye.append(leftKanye, false);
+	wholeKanye.append(rightKanye, false);
 	wholeKanye.append(mouth, false);
+	
+	final double ORIG_X = 100;
+	final double ORIG_Y = 200;
+	final double ORIG_WIDTH = 300;
+	final double ORIG_HEIGHT = 175;
 
         // translate to the origin by subtracting the original upper left x and y
         // then translate to (x,y) by adding x and y
         
-        Shape s = ShapeTransforms.translatedCopyOf(wholeKanye, -ORIG_ULX + x, -ORIG_ULY + y);
+        Shape s = ShapeTransforms.translatedCopyOf(wholeKanye, -ORIG_X + x, -ORIG_Y + y);
  
 	// scale to correct height and width
         s =  ShapeTransforms.scaledCopyOf(s,
@@ -117,6 +104,6 @@ public class KanyeWest extends GeneralPathWrapper implements Shape
 	// Use the GeneralPath constructor that takes a shape and returns
 	// it as a general path to set our instance variable cup
         
-    this.set(new GeneralPath(s));
+	this.set(new GeneralPath(s)); 
     }
 }

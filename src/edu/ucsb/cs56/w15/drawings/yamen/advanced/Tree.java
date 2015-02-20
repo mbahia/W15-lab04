@@ -16,7 +16,7 @@ import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
 /**
-   A vector drawing of a tree that implements
+   A drawing of a tree that implements
    the Shape interface, and so can be drawn, as well as
    rotated, scaled, etc.
       

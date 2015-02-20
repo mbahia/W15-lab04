@@ -15,8 +15,7 @@ import java.awt.geom.AffineTransform;
 import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 /**
-   A House
-      
+   An extension of the Tree.java class that adds apples to the tree drawing
    @author Yamen Alghrer
    @version for CS56, W15, UCSB, 02/19/2015
    

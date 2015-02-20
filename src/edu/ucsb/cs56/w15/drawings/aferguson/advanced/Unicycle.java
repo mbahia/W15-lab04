@@ -17,8 +17,8 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 /**
    A Unicycle
       
-   @author Phill Conrad 
-   @version for CS56, W11, UCSB, 02/23/2011
+   @author Andrew Ferguson
+   @version for CS56, W15, UCSB, 02/19/2015
    
 */
 public class Unicycle extends Wheel implements Shape

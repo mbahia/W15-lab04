@@ -29,8 +29,8 @@ public class Tree extends GeneralPathWrapper implements Shape
     /**
        Constructor
 
-       @param x x coord of lower left corner of Tree
-       @param y y coord of lower left corner of Tree
+       @param x x coord of upper left corner of Tree
+       @param y y coord of upper left corner of Tree
        @param width width of the Tree
        @param height of tree (The whole tree)
      */
@@ -41,25 +41,21 @@ public class Tree extends GeneralPathWrapper implements Shape
         // draw things the right way to begin with, using the
         // x, y, width and height.   If you haven't already
         // hard coded a particular drawing, this may be an easier
-        // way.
-        
-        double treeBottom = .85 * height;
-        double treeTop = height - treeBottom;
-        
-        double treeUpperLeft = y + treeTop;
-        
+        // way.  
         // Make the bottom of the tree
         
+	double treeBarkHeight = height * .30;
+	double treeBarkWidth = width * .25;
+	double treeTop = height - treeBarkHeight;
+	
         Rectangle2D.Double bottom = 
-            new Rectangle2D.Double(x + width/1.5, y,
-                          width/1.5, width * 1.5);
+            new Rectangle2D.Double(x + treeBarkWidth * 1.25, y,
+                          treeBarkWidth, treeBarkHeight);
                           
-        // make the top of the tree.   Remember that y goes DOWN the page,
-        // so we ADD to y to get a "lower" value on the screen
         
         Ellipse2D.Double top = 
-            new Ellipse2D.Double (x, treeBottom,
-                               width * 2, width * 2);
+            new Ellipse2D.Double (x,y - treeTop,
+                               treeTop, treeTop);
 
         // put the tree together
        

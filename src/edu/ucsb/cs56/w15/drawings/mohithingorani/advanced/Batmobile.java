@@ -31,7 +31,7 @@ public class Batmobile extends Car implements Shape
 	super(x,y,width,height);
 
 	// get the GeneralPath that we are going to append stuff to
-	GeneralPath gp = this.get();
+	//GeneralPath gp = this.get();
 	
 	// Make three windows, spaced like this, where w=width/10.0;
 	// | +--+ +--+ +--+ |
@@ -43,8 +43,8 @@ public class Batmobile extends Car implements Shape
 	// height of the window is 0.25height;
 
 
-	double topMissilePositionX = height * 0.15 ;
-	double topMissilePositionY = width * 0.3 ; 
+	double topMissilePositionX = x + width * 0.2 ;
+	double topMissilePositionY = y + height * 0.18 ; 
 	double topMissileLength = width * 0.3;
 	double topMissileWidth = height *0.1;
 	double missilePoint = topMissileWidth * 0.5;
@@ -61,7 +61,7 @@ public class Batmobile extends Car implements Shape
 	// (Hint--is a method of "GeneralPath")
 
         GeneralPath addMissile = this.get();
-        addMissile.append(topMissile, false);
+	addMissile.append(topMissile, false);
         addMissile.append(topPointer, false);
         addMissile.append(bottomPointer, false); 
     }

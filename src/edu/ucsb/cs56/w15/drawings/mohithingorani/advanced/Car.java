@@ -42,10 +42,10 @@ public class Car extends GeneralPathWrapper implements Shape
         //  width and height of the original points used to 
         //  plot the *hard-coded* car
         
-        final double ORIG_ULX = 100.0; 
-        final double ORIG_ULY = 100.0; 
-        final double ORIG_HEIGHT = 300.0; 
-        final double ORIG_WIDTH = 400.0; 
+        //final double ORIG_ULX = 100.0; 
+        //final double ORIG_ULY = 100.0; 
+        //final double ORIG_HEIGHT = 300.0; 
+        //final double ORIG_WIDTH = 400.0; 
         
 	double groundClearence =  height * 0.8;
 	double tireClearence = height * 0.7;
@@ -104,12 +104,12 @@ public class Car extends GeneralPathWrapper implements Shape
         // translate to the origin by subtracting the original upper left x and y
         // then translate to (x,y) by adding x and y
         
-        Shape s = ShapeTransforms.translatedCopyOf(wholeCar, -ORIG_ULX + x, -ORIG_ULY + y);
+        Shape s = ShapeTransforms.translatedCopyOf(wholeCar, 0, 0);
  
 	// scale to correct height and width
         s =  ShapeTransforms.scaledCopyOf(s,
-					  width/ORIG_WIDTH,
-					  height/ORIG_HEIGHT) ;
+					  1,1
+					  ) ;
 	 
 	// Use the GeneralPath constructor that takes a shape and returns
 	// it as a general path to set our instance variable cup

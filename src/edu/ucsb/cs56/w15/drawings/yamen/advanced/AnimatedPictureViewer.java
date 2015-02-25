@@ -14,6 +14,7 @@ public class AnimatedPictureViewer {
     private int y = 200;
     
     private int dx = 5;
+    private int dy = 5;
 
     public static void main (String[] args) {
       new AnimatedPictureViewer().go();
@@ -54,7 +55,11 @@ public class AnimatedPictureViewer {
          // Clear the panel first
           g2.setColor(Color.white);
           g2.fillRect(0,0,this.getWidth(), this.getHeight());
-
+	  
+	  //Increase the size of the stroke
+	  Stroke thick = new BasicStroke(3.5f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);
+	  g2.setStroke(thick);
+	  
           // Draw a random colored Apple Tree
 	  int red = (int) (Math.random() * 255);
 	  int green = (int) (Math.random() * 255);
@@ -63,7 +68,7 @@ public class AnimatedPictureViewer {
 	  Color randColor = new Color(red, green, blue);
 	  
           g2.setColor(randColor);
-          TreeWithApples test = new TreeWithApples(x, y, 200, 200);
+          TreeWithApples test = new TreeWithApples(x, y, 150, 150);
           g2.draw(test);
        }
     }
@@ -72,12 +77,15 @@ public class AnimatedPictureViewer {
       public void run() {
         try {
           while (true) {
-            // Bounce off the walls
+            // Bounce off the walls diagonally
 
             if (x >= 400) { dx = -5; }
-            if (x <= 50) { dx = 5; }
+            if (x <= 150) { dx = 5; }
+	    if (y >= 400) { dy = -5;}
+	    if (y <= 150) { dy = 5;} 
             
-            x += dx;                
+            x += dx;
+	    y += dy;
             panel.repaint();
             Thread.sleep(50);
           }

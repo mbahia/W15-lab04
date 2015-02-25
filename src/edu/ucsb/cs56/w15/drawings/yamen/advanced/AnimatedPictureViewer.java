@@ -12,9 +12,11 @@ public class AnimatedPictureViewer {
     
     private int x = 200;
     private int y = 200;
+    private float z = 1.0f;
     
     private int dx = 5;
     private int dy = 5;
+    private float dz = .1f;
 
     public static void main (String[] args) {
       new AnimatedPictureViewer().go();
@@ -56,9 +58,9 @@ public class AnimatedPictureViewer {
           g2.setColor(Color.white);
           g2.fillRect(0,0,this.getWidth(), this.getHeight());
 	  
-	  //Increase the size of the stroke
-	  Stroke thick = new BasicStroke(3.5f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);
-	  g2.setStroke(thick);
+	  //Change the size of the Stroke
+	  Stroke s = new BasicStroke(z, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);
+	  g2.setStroke(s);
 	  
           // Draw a random colored Apple Tree
 	  int red = (int) (Math.random() * 255);
@@ -82,10 +84,13 @@ public class AnimatedPictureViewer {
             if (x >= 400) { dx = -5; }
             if (x <= 150) { dx = 5; }
 	    if (y >= 400) { dy = -5;}
-	    if (y <= 150) { dy = 5;} 
+	    if (y <= 150) { dy = 5;}
+	    if (z >= 5.0)   { dz = -.1f;}
+	    if (z <= 1.0)   { dz = .1f;}
             
             x += dx;
 	    y += dy;
+	    z += dz;
             panel.repaint();
             Thread.sleep(50);
           }

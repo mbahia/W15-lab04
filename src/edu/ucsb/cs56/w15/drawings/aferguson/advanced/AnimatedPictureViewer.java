@@ -20,11 +20,11 @@ public class AnimatedPictureViewer {
     private int y = 200;
     
 
-    private UniTop uniTop = new UniTop(x, y, 60);
+    private UniTop top1 = new UniTop(x, y, 60);
     private Wheel wheel1 = new Wheel(x, y, 60);
 
-    private Shape uniWheel = ShapeTransforms.scaledCopyOfLL(wheel1, 1, 1);;
-
+    private Shape uniWheel = ShapeTransforms.scaledCopyOfLL(wheel1, 1, 1);
+    private Shape uniTop = ShapeTransforms.scaledCopyOfLL(top1, 1, 1);
     
     private int dx = 5;
 
@@ -37,7 +37,7 @@ public class AnimatedPictureViewer {
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
       frame.getContentPane().add(panel);
-      frame.setSize(800,600);
+      frame.setSize(850,600);
       frame.setVisible(true);
       
       frame.getContentPane().addMouseListener(new MouseAdapter() {
@@ -73,13 +73,15 @@ public class AnimatedPictureViewer {
 	  if(dx==5){
 	      uniWheel = ShapeTransforms.translatedCopyOf(uniWheel, 5, 0);
 	      uniWheel = ShapeTransforms.rotatedCopyOf(uniWheel, Math.PI/10.0*(-1));
+	      uniTop = ShapeTransforms.translatedCopyOf(uniTop, 5, 0);
 	  }	  
 	  else{
 	      uniWheel = ShapeTransforms.translatedCopyOf(uniWheel, -5, 0);
 	      uniWheel = ShapeTransforms.rotatedCopyOf(uniWheel,Math.PI/10.0);
+	      uniTop = ShapeTransforms.translatedCopyOf(uniTop, -5, 0);
           }
 	  //	  UniTop uniTop = new UniTop(x, y, 60);
-	  UniTop uniTop = new UniTop(x, y, 60);
+	  //UniTop uniTop = new UniTop(x, y, 60);
           g2.draw(uniTop);
 	  g2.draw(uniWheel);
           }
@@ -92,8 +94,8 @@ public class AnimatedPictureViewer {
           while (true) {
             // Bounce off the walls
 
-            if (x >= 740) { dx = -5; }
-            if (x <= 40) { dx = 5; }
+            if (x >= 725) { dx = -5; }
+            if (x <= 0) { dx = 5; }
             
             x += dx;                
             panel.repaint();

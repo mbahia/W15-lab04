@@ -3,6 +3,21 @@ package edu.ucsb.cs56.w15.drawings.yamen.advanced;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.Graphics2D;
+import java.awt.geom.Line2D;  // single lines
+import java.awt.geom.Ellipse2D;  // ellipses and circles
+import java.awt.geom.Rectangle2D; // for the bounding box
+import java.awt.Rectangle;  // squares and rectangles
+import java.awt.geom.GeneralPath; // combinations of lines and curves
+import java.awt.geom.AffineTransform; // translation, rotation, scale
+import java.awt.Shape; // general class for shapes
+import java.awt.Color; // class for Colors
+import java.awt.Stroke;
+import java.awt.BasicStroke;
+
+import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
+import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
+
 
 public class AnimatedPictureViewer {
 
@@ -13,10 +28,12 @@ public class AnimatedPictureViewer {
     private int x = 200;
     private int y = 200;
     private float z = 1.0f;
+    private double r = 2 * Math.PI;
     
     private int dx = 5;
     private int dy = 5;
     private float dz = .1f;
+    private double dr = Math.PI / 18;
 
     public static void main (String[] args) {
       new AnimatedPictureViewer().go();
@@ -71,7 +88,12 @@ public class AnimatedPictureViewer {
 	  
           g2.setColor(randColor);
           TreeWithApples test = new TreeWithApples(x, y, 150, 150);
-          g2.draw(test);
+
+	  // Implement Rotation of Apple Tree
+	  
+	  Shape t1 = ShapeTransforms.rotatedCopyOf(test, r);
+	  
+          g2.draw(t1);
        }
     }
     
@@ -91,6 +113,7 @@ public class AnimatedPictureViewer {
             x += dx;
 	    y += dy;
 	    z += dz;
+	    r += dr;
             panel.repaint();
             Thread.sleep(50);
           }

@@ -14,7 +14,7 @@ import java.awt.geom.AffineTransform;
 import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 /**
-   A House
+   An Arrow
       
    @author Julio Maldonado
    @version for CS56, W15, UCSB, 02/21/2015
@@ -30,17 +30,17 @@ public class BullsEyeWithArrow extends BullsEye implements Shape
       
 	super(x,y,width,height);
 
-	Line2D.Double MainLength = new Line2D.Double(x+(width/2),x+(width/2),y+width,y);
+	Line2D.Double MainLength = new Line2D.Double(y+(height/2),y+(height/2),y+height,y);
 
-	Line2D.Double TopLength = new Line2D.Double(y+width,y,y+width,y-(width/5));	
-	Line2D.Double BotLength = new Line2D.Double(y+(width),y,y+width+(width/5),y);
+	Line2D.Double TopLength = new Line2D.Double(y+height,y,y+height,y-(height/5));	
+	Line2D.Double BotLength = new Line2D.Double(y+height,y,y+height+(height/5),y);
 
-	Line2D.Double Mid1Length = new Line2D.Double(y+width-(width/10),y+(width/10),y+width,y-(width/5));	
-	Line2D.Double Mid2Length = new Line2D.Double(y+(width)-(width/10),y+(width/10),y+width+(width/5),y);
+	Line2D.Double Mid1Length = new Line2D.Double(y+height-(height/10),y+(height/10),y+height,y-(height/5));	
+	Line2D.Double Mid2Length = new Line2D.Double(y+(height)-(height/10),y+(height/10),y+height+(height/5),y);
 
-	Line2D.Double PointTopLength = new Line2D.Double(x+(width/2),x+(width/2),x+(width/2)+(width/20),x+(width/2)-(width/8));
-	Line2D.Double PointBotLength = new Line2D.Double(x+(width/2),x+(width/2),x+(width/2)+(width/8),x+(width/2)-(width/20));
-	Line2D.Double PointBackLength = new Line2D.Double(x+(width/2)+(width/20),x+(width/2)-(width/8),x+(width/2)+(width/8),x+(width/2)-(width/20));	
+	Line2D.Double PointTopLength = new Line2D.Double(y+(height/2),y+(height/2),y+(height/2)+(height/20),y+(height/2)-(height/8));
+	Line2D.Double PointBotLength = new Line2D.Double(y+(height/2),y+(height/2),y+(height/2)+(height/8),y+(height/2)-(height/20));
+	Line2D.Double PointBackLength = new Line2D.Double(y+(height/2)+(height/20),y+(height/2)-(height/8),y+(height/2)+(height/8),y+(height/2)-(height/20));	
 
 	
 	// add the windows to the house

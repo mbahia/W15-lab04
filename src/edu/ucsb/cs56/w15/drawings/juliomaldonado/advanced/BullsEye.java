@@ -34,10 +34,10 @@ public class BullsEye extends GeneralPathWrapper implements Shape
      
       
         
-        Ellipse2D.Double FirstCircle = new Ellipse2D.Double(x + 2*width/5, y + 2*width/5, width/5, height/5);
-	Ellipse2D.Double SecondCircle = new Ellipse2D.Double(x + 3*width/10, y + 3*width/10, width/2.5, height/2.5);
-	Ellipse2D.Double ThirdCircle = new Ellipse2D.Double(x + width/10, y + width/10, width/1.25, height/1.25);
-	Ellipse2D.Double OuterCircle = new Ellipse2D.Double(x, y, width, height);
+        Ellipse2D.Double FirstCircle = new Ellipse2D.Double(x + 2*width/5, x + 2*width/5, width/5, width/5);
+	Ellipse2D.Double SecondCircle = new Ellipse2D.Double(x + 3*width/10, x + 3*width/10, width/2.5, width/2.5);
+	Ellipse2D.Double ThirdCircle = new Ellipse2D.Double(x + width/10, x + width/10, width/1.25, width/1.25);
+	Ellipse2D.Double OuterCircle = new Ellipse2D.Double(x, x, width, width);
 	/*
 	Line2D.Double MainLength = new Line2D.Double(x+(width/2),x+(width/2),y+width,y);
 

@@ -1,7 +1,6 @@
 package edu.ucsb.cs56.w15.drawings.kelvinyang.advanced;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
-import java.awt.Color;
 import java.io.File;
 import javax.imageio.ImageIO;
 import java.io.IOException;

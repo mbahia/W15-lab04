@@ -1,12 +1,6 @@
 package edu.ucsb.cs56.w15.drawings.kelvinyang.advanced;
 
 import java.awt.Graphics2D;
-import java.awt.geom.Line2D;  // single lines
-import java.awt.geom.Ellipse2D;  // ellipses and circles
-import java.awt.geom.Rectangle2D; // for the bounding box
-import java.awt.Rectangle;  // squares and rectangles
-import java.awt.geom.GeneralPath; // combinations of lines and curves
-import java.awt.geom.AffineTransform; // translation, rotation, scale
 import java.awt.Shape; // general class for shapes
 import java.awt.Color; // class for Colors
 import java.awt.Stroke;
@@ -22,13 +16,10 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
  * @author Kelvin Yang 
  * @version for CS56, lab04, Winter 2015
  */
-
-
 public class AllMyDrawings
 {
     /** Draw a picture with a fan with blades of a different color
      */
-
     public static void drawPicture1(Graphics2D g2)
     {
         g2.drawString("Quite the fan by Kelvin Yang", 20,20);
@@ -45,7 +36,6 @@ public class AllMyDrawings
         g2.draw(f2);
         g2.setStroke(orig);
     }
-
 
     /** Draw a picture with many fans, some rotated, some thicker
      */
@@ -91,7 +81,6 @@ public class AllMyDrawings
   
     /** Draw a different picture with three fans.  Two with blades, one without
      */
-
     public static void drawPicture3(Graphics2D g2)
     {
         // label the drawing

@@ -1,24 +1,27 @@
-package edu.ucsb.cs56.w14.drawings.andrewberls.advanced;
+package edu.ucsb.cs56.w15.drawings.mohithingorani.advanced;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class IpodAnimation {
+public class AnimatedPictureViewer {
 
     private DrawPanel panel = new DrawPanel();
     
-    private Ipod ipod = new Ipod(100, 100, 100);
-    
+    private Car car = new Car(0, 200, 100,60);
+    private Batmobile bat = new Batmobile( 0, 400, 100,60);
     Thread anim;   
     
-    private int x = 100;
-    private int y = 100;
-    
-    private int dx = 5;
+    private int x = 0;
+    private int y = 200;    
+    private int dx = 2;
+	
+    private int bx = 0;	
+    private int by = 400;	
+    private int dbx = 3; 
 
     public static void main (String[] args) {
-      new IpodAnimation().go();
+      new AnimatedPictureViewer().go();
     }
 
     public void go() {
@@ -26,7 +29,7 @@ public class IpodAnimation {
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
       frame.getContentPane().add(panel);
-      frame.setSize(640,480);
+      frame.setSize(800,600);
       frame.setVisible(true);
       
       frame.getContentPane().addMouseListener(new MouseAdapter() {
@@ -59,8 +62,12 @@ public class IpodAnimation {
 
           // Draw the Ipod
           g2.setColor(Color.RED);
-          Ipod test = new Ipod(x, y, 100);
-          g2.draw(test);
+          Car test = new Car(x, y, 100,60);
+	  g2.draw(test);
+          
+	  g2.setColor(Color.BLUE);
+	  Batmobile testbat = new Batmobile ( bx,by, 100,60);
+	  g2.draw(testbat);
        }
     }
     
@@ -70,10 +77,12 @@ public class IpodAnimation {
           while (true) {
             // Bounce off the walls
 
-            if (x >= 400) { dx = -5; }
-            if (x <= 50) { dx = 5; }
+            if (x >= 600) { x = 0; }
+	    if (bx >= 600) { bx =0; }
+           
             
-            x += dx;                
+            x += dx;
+	    bx +=dbx;                
             panel.repaint();
             Thread.sleep(50);
           }
